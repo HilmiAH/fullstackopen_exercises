@@ -1,0 +1,18 @@
+User vists notes SPA:
+
+// pretty much the same as traditional webapp
+
+// browser requests the html
+browser->server: HTTP GET /exampleapp/spa
+server->browser: html 
+
+// browser requests the css and js at the same time
+browser->server: HTTP GET exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET exampleapp/spa.js
+server-->browser: spa.js
+
+// browser loads and executes spa.js, which requests /data.json
+browser->server: HTTP GET exampleapp/data.json
+server-browser: data.json
+// callback executes in the browser, calling redrawNotes(), populating the ul with li elements for each note in data.json

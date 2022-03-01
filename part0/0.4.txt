@@ -1,0 +1,23 @@
+Traditional Webapp
+User creates and submits a new note:
+
+browser->server: HTTP POST /exampleapp/new_note 
+// server adds the text data from req.body.note to its notes array
+
+server->browser: response with a redirect to /exampleapp/notes
+// causes the whole page to refresh
+
+// browser requests the html
+browser->server: HTTP GET /exampleapp/notes
+server->browser: html
+
+// browser requests the css and js at the same time
+browser->server: HTTP GET exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET exampleapp/main.js
+server-->browser: main.js
+
+// browser loads and executes main.js, which requests /data.json
+browser->server: HTTP GET exampleapp/data.json
+server-browser: data.json
+// callback executes in the browser, populating the ul with li elements for each note in data.json

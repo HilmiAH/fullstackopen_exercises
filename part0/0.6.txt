@@ -1,0 +1,8 @@
+User sends new note on Notes SPA:
+
+- BreventDefault() stops normal form behavior from occuring
+- Browser creates a new note object, and updates it's own notes array and displays it with redrawNotes()
+- Browser then sendToServer(note)
+// Note that browser doesn't refresh
+browser->server: HTTP POST exampleapp/new_note_spa
+server->browser: responds with json {message: "note created"}
